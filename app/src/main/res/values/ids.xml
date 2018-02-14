@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="progressBar" type="id">false</item>
+    <item name="progress_msg" type="id">false</item>
+
+
+
+    <!--===========================-->
+
+
+    <item name="action_bar_activity_content" type="id" />
+    <item name="action_bar_spinner" type="id" />
+    <item name="action_menu_divider" type="id" />
+    <item name="action_menu_presenter" type="id" />
+    <item name="home" type="id" />
+    <item name="item_touch_helper_previous_elevation" type="id" />
+    <item name="progress_circular" type="id" />
+    <item name="progress_horizontal" type="id" />
+    <item name="split_action_bar" type="id" />
+    <item name="up" type="id" />
+    <item name="view_offset_helper" type="id" />
+    <item name="action_bar_title" type="id">false</item>
+    <item name="action_bar_subtitle" type="id">false</item>
+    <item name="action_mode_close_button" type="id">false</item>
+    <item name="activity_chooser_view_content" type="id">false</item>
+    <item name="expand_activities_button" type="id">false</item>
+    <item name="image" type="id">false</item>
+    <item name="default_activity_button" type="id">false</item>
+    <item name="list_item" type="id">false</item>
+    <item name="icon" type="id">false</item>
+    <item name="title" type="id">false</item>
+    <item name="buttonPanel" type="id">false</item>
+    <item name="spacer" type="id">false</item>
+    <item name="parentPanel" type="id">false</item>
+    <item name="topPanel" type="id">false</item>
+    <item name="title_template" type="id">false</item>
+    <item name="alertTitle" type="id">false</item>
+    <item name="contentPanel" type="id">false</item>
+    <item name="scrollIndicatorUp" type="id">false</item>
+    <item name="scrollView" type="id">false</item>
+    <item name="textSpacerNoButtons" type="id">false</item>
+    <item name="scrollIndicatorDown" type="id">false</item>
+    <item name="customPanel" type="id">false</item>
+    <item name="custom" type="id">false</item>
+    <item name="expanded_menu" type="id">false</item>
+    <item name="checkbox" type="id">false</item>
+    <item name="shortcut" type="id">false</item>
+    <item name="radio" type="id">false</item>
+    <item name="action_bar_root" type="id">false</item>
+    <item name="action_mode_bar_stub" type="id">false</item>
+    <item name="action_mode_bar" type="id">false</item>
+    <item name="decor_content_parent" type="id">false</item>
+    <item name="action_bar_container" type="id">false</item>
+    <item name="action_bar" type="id">false</item>
+    <item name="action_context_bar" type="id">false</item>
+    <item name="edit_query" type="id">false</item>
+    <item name="search_bar" type="id">false</item>
+    <item name="search_badge" type="id">false</item>
+    <item name="search_button" type="id">false</item>
+    <item name="search_edit_frame" type="id">false</item>
+    <item name="search_mag_icon" type="id">false</item>
+    <item name="search_plate" type="id">false</item>
+    <item name="search_src_text" type="id">false</item>
+    <item name="search_close_btn" type="id">false</item>
+    <item name="submit_area" type="id">false</item>
+    <item name="search_go_btn" type="id">false</item>
+    <item name="search_voice_btn" type="id">false</item>
+    <item name="select_dialog_listview" type="id">false</item>
+    <item name="change_et_old" type="id">false</item>
+    <item name="textView" type="id">false</item>
+    <item name="change_et_new" type="id">false</item>
+    <item name="change_et_confirm" type="id">false</item>
+    <item name="change_password_commit" type="id">false</item>
+    <item name="consumer_type_recyclerView" type="id">false</item>
+    <item name="consumer_recode_refresh" type="id">false</item>
+    <item name="consumer_recode_recyclerView" type="id">false</item>
+    <item name="forget_et_phone" type="id">false</item>
+    <item name="forget_et_sn" type="id">false</item>
+    <item name="forget_btn_getsn" type="id">false</item>
+    <item name="forget_et_identification" type="id">false</item>
+    <item name="forget_et_name" type="id">false</item>
+    <item name="forget_et_card" type="id">false</item>
+    <item name="forget_et_new" type="id">false</item>
+    <item name="forget_et_confirm" type="id">false</item>
+    <item name="forget_btn_commit" type="id">false</item>
+    <item name="login_iv_img" type="id">false</item>
+    <item name="login_et_account" type="id">false</item>
+    <item name="login_account_delete" type="id">false</item>
+    <item name="login_et_password" type="id">false</item>
+    <item name="login_password_delete" type="id">false</item>
+    <item name="login_btn_login" type="id">false</item>
+    <item name="login_cb_remember" type="id">false</item>
+    <item name="login_tv_forget" type="id">false</item>
+    <item name="main_ll_consumer" type="id">false</item>
+    <item name="main_ll_consumer_record" type="id">false</item>
+    <item name="main_ll_account" type="id">false</item>
+    <item name="main_ll_device" type="id">false</item>
+    <item name="main_ll_setting" type="id">false</item>
+    <item name="receive_country_name" type="id">false</item>
+    <item name="receive_country_flag" type="id">false</item>
+    <item name="receive_trading_time" type="id">false</item>
+    <item name="receivables_rate" type="id">false</item>
+    <item name="receive_money_source" type="id">false</item>
+    <item name="receive_country_unit" type="id">false</item>
+    <item name="receive_money_end" type="id">false</item>
+    <item name="receive_account_name" type="id">false</item>
+    <item name="receive_commit" type="id">false</item>
+    <item name="register_et_phone" type="id">false</item>
+    <item name="register_et_sn" type="id">false</item>
+    <item name="register_btn_getsn" type="id">false</item>
+    <item name="register_et_password" type="id">false</item>
+    <item name="register_et_confirm" type="id">false</item>
+    <item name="register_et_identification" type="id">false</item>
+    <item name="register_et_name" type="id">false</item>
+    <item name="register_et_card" type="id">false</item>
+    <item name="register_et_bankaccount" type="id">false</item>
+    <item name="register_et_bankbranch" type="id">false</item>
+    <item name="register_btn_register" type="id">false</item>
+    <item name="type_new" type="id">false</item>
+    <item name="type_old" type="id">false</item>
+    <item name="changeIpAddress" type="id">false</item>
+    <item name="ipAddress" type="id">false</item>
+    <item name="languageSwitch" type="id">false</item>
+    <item name="withdrawals_recode_refresh" type="id">false</item>
+    <item name="withdrawals_recode_recyclerView" type="id">false</item>
+    <item name="withdrawals_tv_balance" type="id">false</item>
+    <item name="withdrawals_tv_balance_rmb" type="id">false</item>
+    <item name="withdrawals_et_cash_money" type="id">false</item>
+    <item name="withdrawals_tv_cash_confirm" type="id">false</item>
+    <item name="withdrawals_tv_cash_record" type="id">false</item>
+    <item name="withdrawals_tv_consumer_record" type="id">false</item>
+    <item name="withdrawals_tv_device_manage" type="id">false</item>
+    <item name="withdrawals_tv_change_paw" type="id">false</item>
+    <item name="withdrawals_btn_exit" type="id">false</item>
+    <item name="content_withdraw_record" type="id">false</item>
+    <item name="touch_outside" type="id">false</item>
+    <item name="design_bottom_sheet" type="id">false</item>
+    <item name="snackbar_text" type="id">false</item>
+    <item name="snackbar_action" type="id">false</item>
+    <item name="navigation_header_container" type="id">false</item>
+    <item name="design_navigation_view" type="id">false</item>
+    <item name="design_menu_item_text" type="id">false</item>
+    <item name="design_menu_item_action_area_stub" type="id">false</item>
+    <item name="design_menu_item_action_area" type="id">false</item>
+    <item name="item_consumer_parent" type="id">false</item>
+    <item name="item_consumer_card" type="id">false</item>
+    <item name="item_consumer_status" type="id">false</item>
+    <item name="item_consumer_time" type="id">false</item>
+    <item name="item_consumer_money" type="id">false</item>
+    <item name="item_consumer_type_parent" type="id">false</item>
+    <item name="item_consumer_type_name" type="id">false</item>
+    <item name="item_withdraw_parent" type="id">false</item>
+    <item name="item_withdraw_money" type="id">false</item>
+    <item name="item_withdraw_time" type="id">false</item>
+    <item name="item_withdraw_status" type="id">false</item>
+    <item name="backiamge" type="id">false</item>
+    <item name="toolbar" type="id">false</item>
+    <item name="tv_toolbar" type="id">false</item>
+    <item name="web_pwv_web" type="id">false</item>
+    <item name="action0" type="id">false</item>
+    <item name="cancel_action" type="id">false</item>
+    <item name="status_bar_latest_event_content" type="id">false</item>
+    <item name="media_actions" type="id">false</item>
+    <item name="action_divider" type="id">false</item>
+    <item name="line1" type="id">false</item>
+    <item name="time" type="id">false</item>
+    <item name="chronometer" type="id">false</item>
+    <item name="text2" type="id">false</item>
+    <item name="line3" type="id">false</item>
+    <item name="text" type="id">false</item>
+    <item name="info" type="id">false</item>
+    <item name="end_padder" type="id">false</item>
+    <item name="iv_normal_refresh_footer_chrysanthemum" type="id">false</item>
+    <item name="tv_normal_refresh_footer_status" type="id">false</item>
+    <item name="meiTuanView" type="id">false</item>
+    <item name="iv_meituan_pull_down" type="id">false</item>
+    <item name="iv_meituan_release_refreshing" type="id">false</item>
+    <item name="moocView" type="id">false</item>
+    <item name="iv_normal_refresh_header_arrow" type="id">false</item>
+    <item name="iv_normal_refresh_header_chrysanthemum" type="id">false</item>
+    <item name="tv_normal_refresh_header_status" type="id">false</item>
+    <item name="stickinessRefreshView" type="id">false</item>
+    <item name="menu_connect" type="id">false</item>
+    <item name="menu_register" type="id">false</item>
+</resources>

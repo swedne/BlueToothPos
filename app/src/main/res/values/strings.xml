@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MyApplication</string>
+    <string name="positive">确定</string>
+    <string name="reset">重置</string>
+    <string name="negative">取消</string>
+    <string name="tips">提示</string>
+    <string name="is_break_connect">蓝牙已连接，是否断开？</string>
+    <string name="not_found_bluetooth">未找到蓝牙设备，请断开蓝牙重新搜索</string>
+    <string name="connect_bluetooth_error">连接蓝牙设备失败....</string>
+    <string name="connect_success_getsn">连接蓝牙成功,正在获取SN号....</string>
+    <string name="connecting">正在连接</string>
+    <string name="device_sn">设备号</string>
+    <string name="disconnect_bluetooth">蓝牙已断开,请重新连接....</string>
+    <string name="band_bluetooth_success">蓝牙绑定成功</string>
+    <string name="banding_bluetooth">正在绑定蓝牙</string>
+    <string name="place_switch_device">请选择蓝牙设备</string>
+    <string name="breaking_bluetooth">正在断开蓝牙....</string>
+    <string name="unfind_device">未找到设备</string>
+    <string name="is_connect">是否打开蓝牙连接？</string>
+    <string name="choose_dev">选择设备？</string>
+    <string name="search_bluetooth">正在搜索蓝牙....</string>
+    <string name="receivables_confirm">确认刷卡</string>
+    <string name="receivables_input_name">请输入持卡人姓名</string>
+    <string name="receivables_convert_rmb">平台结算金额</string>
+    <string name="receivables_input_money">请输入金额</string>
+    <string name="receivables_rate">平台结算率</string>
+    <string name="place_swipping_card">请刷卡....</string>
+    <string name="swipe_error">刷卡失败，请重试</string>
+    <string name="time_not_across_intervals">现在不是交易时间段</string>
+    <string name="system_error">服务器错误，请联系客服</string>
+    <string name="money_must_bigger_zero">收款金额必须大于0</string>
+    <string name="name_is_empty">持卡人姓名不能为空</string>
+    <string name="place_input_password">请输入密码</string>
+</resources>

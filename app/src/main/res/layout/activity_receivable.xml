@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <View
+        style="@style/light_gray_line"
+        android:layout_height="1.0dip" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <!--<include layout="@layout/layout_backimage" />-->
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16.0dip">
+
+                    <LinearLayout style="@style/rect_linear">
+
+                        <TextView
+                            android:id="@id/receive_country_name"
+                            style="@style/receivables_textview"
+                            android:layout_weight="1.0"
+                            android:text="泰国" />
+
+                        <ImageView
+                            android:id="@id/receive_country_flag"
+                            android:layout_width="60.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="2.0dip"
+                            android:src="@mipmap/ic_launcher"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@id/receive_trading_time"
+                            style="@style/receivables_textview"
+                            android:gravity="center|right"
+                            android:text="交易时间：10：00-21：00" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/rect_linear">
+
+                        <TextView
+                            style="@style/receivables_textview"
+                            android:text="@string/receivables_rate" />
+
+                        <EditText
+                            android:id="@id/receivables_rate"
+                            style="@style/receivables_edittext"
+                            android:enabled="false"
+                            android:gravity="right"
+                            android:paddingRight="10.0dip" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/rect_linear">
+
+                        <TextView
+                            style="@style/receivables_textview"
+                            android:text="@string/receivables_input_money" />
+
+                        <EditText
+                            android:id="@id/receive_money_source"
+                            style="@style/receivables_edittext"
+                            android:gravity="right"
+                            android:inputType="numberDecimal" />
+
+                        <TextView
+                            android:id="@id/receive_country_unit"
+                            style="@style/receivables_textview"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/rect_linear">
+
+                        <TextView
+                            style="@style/receivables_textview"
+                            android:text="@string/receivables_convert_rmb" />
+
+                        <EditText
+                            android:id="@id/receive_money_end"
+                            style="@style/receivables_edittext"
+                            android:enabled="false"
+                            android:gravity="right" />
+
+                        <TextView
+                            style="@style/receivables_textview"
+                            android:text="RMB" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/rect_linear">
+
+                        <TextView
+                            style="@style/receivables_textview"
+                            android:text="@string/receivables_input_name" />
+
+                        <EditText
+                            android:id="@id/receive_account_name"
+                            style="@style/receivables_edittext"
+                            android:gravity="right"
+                            android:paddingRight="10.0dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@id/receive_commit"
+                    style="@style/orange_fillet"
+                    android:text="@string/receivables_confirm" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>
