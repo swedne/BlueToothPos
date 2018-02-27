@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Looper;
+import android.widget.Toast;
 
 import com.imagpay.BluetoothBean;
 import com.imagpay.BluetoothHandler;
@@ -27,11 +28,12 @@ public class BaseCommon {
 
     public static void clickMenu(final BaseActivity paramBaseActivity) {
         paramBaseActivity.isGetSn = false;
-        if (BaseActivity.bOpenDevice) {
+        if (paramBaseActivity.bOpenDevice) {
             DialogUtil.showTipsDialog(paramBaseActivity, paramBaseActivity.getString(R.string.is_break_connect), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-                    paramBaseActivity.showCancelDialogRes(R.string.negative);
+//                    paramBaseActivity.showCancelDialogRes(R.string.negative);
                     paramBaseActivity.disconnectBluetooth();
+                    paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
                 }
             });
             return;
@@ -39,8 +41,8 @@ public class BaseCommon {
         if (BaseActivity.bluetoothHandler != null) {
             BaseActivity.bluetoothHandler.removeBluetoothListener(paramBaseActivity);
         }
-        paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
     }
+
 
     public static void getSN(BaseActivity paramBaseActivity) {
         paramBaseActivity.isGetSn = true;
@@ -75,8 +77,8 @@ public class BaseCommon {
         }
         if (paramInt == 1) {
             paramBaseActivity.dismissDialog();
-            paramBaseActivity.showCancelDialogRes(R.string.connect_success_getsn);
-            paramBluetoothCommmanager.GetDeviceInfo();
+//            paramBaseActivity.showCancelDialogRes(R.string.connect_success_getsn);
+//            paramBluetoothCommmanager.GetDeviceInfo();
             return true;
         }
         if (paramInt == 3) {
@@ -165,6 +167,9 @@ public class BaseCommon {
                             paramBluetoothHandler.connect(paramList.get(paramAnonymousInt));
                         } catch (Exception e) {
                             e.printStackTrace();
+                            if (paramBluetoothHandler.isConnected()) {
+                                Toast.makeText(paramBaseActivity, "该设备已链接过,请断开蓝牙重新连接", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }).start();

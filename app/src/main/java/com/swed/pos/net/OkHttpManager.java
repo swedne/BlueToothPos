@@ -445,6 +445,7 @@ public class OkHttpManager {
      * @return 字符串格式的参数
      */
     public static String turnParamsToString(Map<String, String> map) {
+        if (map == null) return "";
         JSONObject jsonObject = new JSONObject(map);
         String result = jsonObject.toString();
 
@@ -463,6 +464,9 @@ public class OkHttpManager {
      * 转格式
      */
     private static RequestBody turn2Body(Map<String, String> params) {
+        if (params==null){
+            params=new HashMap<>();
+        }
         JSONObject jsonObject = new JSONObject(params);
         String result = jsonObject.toString();
 

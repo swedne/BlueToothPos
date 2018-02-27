@@ -14,7 +14,6 @@ public class QueryResult {
     private long statusCode;
     private long status;
     private long time;
-    private String data;
     /**
      * 查询结果
      */
@@ -81,13 +80,6 @@ public class QueryResult {
         this.time = time;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
 
     public long getStatus() {
         return status;

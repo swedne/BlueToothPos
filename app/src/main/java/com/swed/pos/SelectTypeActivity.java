@@ -33,26 +33,6 @@ public class SelectTypeActivity extends BaseActivity {
     private ConsumerType currentType;
     public String pwd = "123456";
 
-    public void connected(BluetoothType paramBluetoothType) {
-        type = paramBluetoothType;
-        runOnUiThread(new Runnable() {
-            public void run() {
-                SelectTypeActivity.this.onBlueState(1);
-                BaseActivity.settings = BaseActivity.bluetoothHandler.shareSettingsInstance();
-                String str = BaseActivity.settings.getSN();
-                HashMap localHashMap = new HashMap();
-                localHashMap.put("SN", str);
-                SelectTypeActivity.this.showToast(R.string.band_bluetooth_success);
-                SelectTypeActivity.this.onDeviceInfo(localHashMap);
-            }
-        });
-    }
-
-    public void disconnect() {
-        onBlueState(2);
-        System.out.println("-------disconnect------");
-    }
-
     public void errMsg(ErrMsg paramErrMsg) {
         MyToast.show(this, "异常：" + paramErrMsg.getMsg());
         System.out.print("异常：" + paramErrMsg.getMsg());
@@ -107,7 +87,7 @@ public class SelectTypeActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 showDialogRes(R.string.place_swipping_card);
-                ReceivablesCommon.startSwippingCard(SelectTypeActivity.this);
+//                ReceivablesCommon.startSwippingCard(SelectTypeActivity.this);
             }
         });
     }
@@ -262,6 +242,7 @@ public class SelectTypeActivity extends BaseActivity {
 //                        return;
 //                    }
 //                    ReceivablesActivity.this.pwd = "";
+                    dismissDialog();
                     DialogUtil.showPasswordDialog(SelectTypeActivity.this, R.string.place_input_password, 2, new DialogUtil.OnMoneyInputListener() {
                         public void onMoneyInput(EditText paramAnonymous2EditText) {
                             String pwd = paramAnonymous2EditText.getText().toString();

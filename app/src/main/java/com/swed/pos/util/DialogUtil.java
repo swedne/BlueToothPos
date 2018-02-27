@@ -37,7 +37,7 @@ public class DialogUtil {
     }
 
     public static void showPasswordDialog(final Context paramContext, int paramInt1, int paramInt2, final OnMoneyInputListener paramOnMoneyInputListener) {
-        AlertDialog.Builder localBuilder = new AlertDialog.Builder(paramContext);
+        final AlertDialog.Builder localBuilder = new AlertDialog.Builder(paramContext);
         localBuilder.setTitle(paramInt1);
         et = new EditText(paramContext);
         et.setInputType(paramInt2);
@@ -49,6 +49,7 @@ public class DialogUtil {
                 if (paramOnMoneyInputListener != null) {
                     paramOnMoneyInputListener.onMoneyInput(et);
                 }
+                paramAnonymousDialogInterface.dismiss();
             }
         });
         localBuilder.setNegativeButton(R.string.negative, null);

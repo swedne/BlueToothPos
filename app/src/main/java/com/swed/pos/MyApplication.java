@@ -1,6 +1,7 @@
 package com.swed.pos;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.imagpay.BluetoothBean;
 import com.imagpay.BluetoothHandler;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 
 public class MyApplication extends Application implements BluetoothListener {
     public BluetoothHandler bluetoothHandler;
+    private static Context mContent;
 
     public void cardDetected(CardDetected paramCardDetected) {
     }
@@ -44,6 +46,7 @@ public class MyApplication extends Application implements BluetoothListener {
 
     public void onCreate() {
         super.onCreate();
+        mContent = this;
         if (this.bluetoothHandler != null) {
             this.bluetoothHandler = new BluetoothHandler(getApplicationContext());
             this.bluetoothHandler.addBluetoothListener(this);
@@ -57,6 +60,10 @@ public class MyApplication extends Application implements BluetoothListener {
     }
 
     public void startedDiscovery() {
+    }
+
+    public static Context getInstace() {
+        return mContent;
     }
 }
 

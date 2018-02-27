@@ -1,8 +1,6 @@
 package com.swed.pos.net;
 
-import android.text.TextUtils;
-
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.swed.pos.model.QueryResult;
 
 /**
@@ -20,6 +18,7 @@ public class DataParserManager {
      * 成功结果编号 200
      */
     private static final int SUCCESS_STATUS_200 = 200;
+    private static final int SUCCESS_STATUS_0 = 0;
     /**
      * 会话过期 401
      */
@@ -51,11 +50,16 @@ public class DataParserManager {
      * 解析返回的json
      */
     private static QueryResult parserJsonString(String jsonString, Class<?> aClass) throws Exception {
-        QueryResult result = JSON.parseObject(jsonString, QueryResult.class);
+        QueryResult result;
+//        try {
+        Gson gson = new Gson();
+        result = (QueryResult) gson.fromJson(jsonString, aClass);
         result.setSuccess(isSuccess(result));
-        if (result.isSuccess()) {
-            result.setHasData(!TextUtils.isEmpty(result.getData()) && !"[]".equals(result.getData().trim()));
-        }
+//        QueryResult result = (QueryResult) JSON.parseObject(jsonString, aClass);
+//        result.setSuccess(isSuccess(result));
+//        if (result.isSuccess()) {
+//            result.setHasData(!TextUtils.isEmpty(result.getData()) && !"[]".equals(result.getData().trim()));
+//        }
         return result;
     }
 
@@ -80,6 +84,6 @@ public class DataParserManager {
      */
     private static boolean isSuccess(QueryResult result) {
         return result.getStatus() == SUCCESS_STATUS_200
-                || result.getStatus() == SUCCESS_STATUS_1;
+                || result.getStatus() == SUCCESS_STATUS_1 || result.getStatusCode() == SUCCESS_STATUS_0;
     }
 }

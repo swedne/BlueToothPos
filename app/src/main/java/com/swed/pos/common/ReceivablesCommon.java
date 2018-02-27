@@ -1,6 +1,7 @@
 package com.swed.pos.common;
 
 import com.swed.pos.BaseActivity;
+import com.swed.pos.OtherWebActivity;
 import com.swed.pos.SelectTypeActivity;
 import com.swed.pos.model.CardData;
 import com.swed.pos.model.ConsumerType;
@@ -182,19 +183,21 @@ public class ReceivablesCommon {
 //        });
 //    }
 
-    public static void startSwippingCard(SelectTypeActivity paramReceivablesActivity) {
+    public static void startSwippingCard(OtherWebActivity paramReceivablesActivity) {
 //        if (!checkData(paramReceivablesActivity)) {
 //            return;
 //        }
-        do {
-            if (!BaseActivity.bOpenDevice) {
-                break;
-            }
-            paramReceivablesActivity.startSwippingCard();
-        } while (BaseActivity.bluetoothHandler == null);
-        BaseActivity.bluetoothHandler.removeBluetoothListener(paramReceivablesActivity);
-        BaseActivity.bluetoothHandler.addBluetoothListener(paramReceivablesActivity);
-        paramReceivablesActivity.setSwipCard(true);
-        BaseCommon.clickMenu(paramReceivablesActivity);
+//        do {
+//            if (!BaseActivity.bOpenDevice) {
+//                break;
+//            }
+//        } while (BaseActivity.bluetoothHandler == null);
+        paramReceivablesActivity.startSwippingCard();
+        if (BaseActivity.bluetoothHandler != null) {
+            BaseActivity.bluetoothHandler.removeBluetoothListener(paramReceivablesActivity);
+            BaseActivity.bluetoothHandler.addBluetoothListener(paramReceivablesActivity);
+            paramReceivablesActivity.setSwipCard(true);
+        }
+//        BaseCommon.clickMenu(paramReceivablesActivity);
     }
 }

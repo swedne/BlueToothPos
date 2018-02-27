@@ -18,10 +18,8 @@ import com.imagpay.BluetoothHandler;
 import com.imagpay.BluetoothListener;
 import com.imagpay.ErrMsg;
 import com.imagpay.Settings;
-import com.imagpay.SwipeHandler;
 import com.imagpay.ble.BleHandler;
 import com.imagpay.enums.BluetoothType;
-import com.imagpay.enums.CardDetected;
 import com.imagpay.enums.PinPadEvent;
 import com.jhl.bluetooth.ibridge.BluetoothIBridgeDevice;
 import com.jhl.jhlblueconn.BlueCommangerCallback;
@@ -33,7 +31,6 @@ import com.swed.pos.util.MyToast;
 import com.swed.pos.util.ShareManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -295,8 +292,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BlueComm
                     } catch (Exception localException) {
                         localException.printStackTrace();
                     }
+                } else {
+                    BaseActivity.this.showToast(R.string.not_found_bluetooth);
                 }
-                BaseActivity.this.showToast(R.string.not_found_bluetooth);
             }
         });
     }
