@@ -1,11 +1,15 @@
 package com.swed.pos.common;
 
+import android.widget.EditText;
+
+import com.jhl.jhlblueconn.BluetoothCommmanager;
 import com.swed.pos.BaseActivity;
 import com.swed.pos.OtherWebActivity;
 import com.swed.pos.SelectTypeActivity;
 import com.swed.pos.model.CardData;
 import com.swed.pos.model.ConsumerType;
 import com.swed.pos.myapplication.R;
+import com.swed.pos.util.DialogUtil;
 import com.swed.pos.util.TextUtil;
 import com.swed.pos.util.TimeUtil;
 
@@ -173,17 +177,17 @@ public class ReceivablesCommon {
 //        });
 //    }
 
-//    public static void showPasswordInputDialog(ReceivablesActivity paramReceivablesActivity) {
-//        paramReceivablesActivity.pwd = "";
-//        DialogUtil.showPasswordDialog(paramReceivablesActivity, 2131099737, 2, new DialogUtil.OnMoneyInputListener() {
-//            public void onMoneyInput(EditText paramAnonymousEditText) {
-//                this.val$activity.pwd = paramAnonymousEditText.getText().toString();
-//                BluetoothCommmanager.InputPassword(paramAnonymousEditText.getText().toString(), paramAnonymousEditText.getText().toString().length());
-//            }
-//        });
-//    }
+    public static void showPasswordInputDialog(final OtherWebActivity paramReceivablesActivity) {
+        paramReceivablesActivity.pwd = "";
+        DialogUtil.showPasswordDialog(paramReceivablesActivity, R.string.place_input_password, 2, new DialogUtil.OnMoneyInputListener() {
+            public void onMoneyInput(EditText paramAnonymousEditText) {
+                paramReceivablesActivity.pwd = paramAnonymousEditText.getText().toString();
+                BluetoothCommmanager.InputPassword(paramAnonymousEditText.getText().toString(), paramAnonymousEditText.getText().toString().length());
+            }
+        });
+    }
 
-    public static void startSwippingCard(OtherWebActivity paramReceivablesActivity) {
+    public static void startSwippingCard(OtherWebActivity paramReceivablesActivity, String money) {
 //        if (!checkData(paramReceivablesActivity)) {
 //            return;
 //        }
@@ -192,7 +196,7 @@ public class ReceivablesCommon {
 //                break;
 //            }
 //        } while (BaseActivity.bluetoothHandler == null);
-        paramReceivablesActivity.startSwippingCard();
+        paramReceivablesActivity.startSwippingCard(money);
         if (BaseActivity.bluetoothHandler != null) {
             BaseActivity.bluetoothHandler.removeBluetoothListener(paramReceivablesActivity);
             BaseActivity.bluetoothHandler.addBluetoothListener(paramReceivablesActivity);

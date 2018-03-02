@@ -15,6 +15,12 @@ public class StringBean extends QueryResult {
     public class StringData {
         private String url;
 
+        public String getIs_show() {
+            return is_show;
+        }
+
+        private String is_show;
+
         public String getUrl() {
             return url;
         }

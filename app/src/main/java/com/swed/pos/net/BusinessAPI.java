@@ -15,6 +15,10 @@ public class BusinessAPI {
      * 获取跳转链接
      */
     static final String H5_URL = "http://upay.xmktv.net?g=app& m=public&a=getUrl";
+    /**
+     * 获取启动页
+     */
+    static final String H5_INRO = "http://upay.xmktv.net?g=app&m=public&a=getLoginWeb";
 
     /**
      * 登录
@@ -36,5 +40,12 @@ public class BusinessAPI {
      */
     public static void getUrl(OkHttpManager.HttpCallback callback) {
         OkHttpManager.getInstance().postAsync(H5_URL, callback);
+    }
+
+    /**
+     * 获取启动页
+     */
+    public static void getIntro(OkHttpManager.HttpCallback callback) {
+        OkHttpManager.getInstance().postAsync(H5_INRO, callback);
     }
 }

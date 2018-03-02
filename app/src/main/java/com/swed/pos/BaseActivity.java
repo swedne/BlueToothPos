@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BlueComm
     public static BluetoothHandler bluetoothHandler;
     public static Map<String, String> deviceInfo;
     private static Set<LodingDialog> dias = new HashSet();
-    protected static Stack<BaseActivity> mLocalStack;
+    public static Stack<BaseActivity> mLocalStack;
     public static Settings settings;
     private static final int titleTextColor = -1;
     public static BluetoothType type;
@@ -88,7 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BlueComm
         }
         this.isShowDialog = true;
         if (this.lodingDialog == null) {
-            this.lodingDialog = new LodingDialog(this, paramString, paramBoolean);
+            lodingDialog = new LodingDialog(this, paramString, paramBoolean);
             dias.add(this.lodingDialog);
         }
         System.out.println(this + "------------showDialog------------" + this.lodingDialog);
@@ -318,63 +318,64 @@ public abstract class BaseActivity extends AppCompatActivity implements BlueComm
         }
     }
 
+
     public void onResult(final int paramInt1, final int paramInt2, final String paramString) {
-        System.out.println("onResult------>" + paramInt1 + "---" + paramInt2 + "---" + paramString);
-        runOnUiThread(new Runnable() {
-            public void run() {
-                switch (paramInt1) {
-                    default:
-                        break;
-                    case 80:
-                        showToast(paramString.toString());
-                        break;
-                    case 18:
-                    case 24:
-                        if (paramInt2 == 0) {
+//        System.out.println("onResult------>" + paramInt1 + "---" + paramInt2 + "---" + paramString);
+//        runOnUiThread(new Runnable() {
+//            public void run() {
+//                switch (paramInt1) {
+//                    default:
+//                        break;
+//                    case 80:
+//                        showToast(paramString.toString());
+//                        break;
+//                    case 18:
+//                    case 24:
+//                        if (paramInt2 == 0) {
 //                            showPasswordInputDialog(ReceivablesActivity.this);
-                            break;
-                        }
-                        showToast("刷卡失败,错误代码:" + Integer.toString(paramInt2));
-                        break;
-                    case 52:
-                        if (paramInt2 == 0) {
-                            showToast("主密钥设置成功");
-                            break;
-                        }
-                        showToast("主密钥设置失败,错误代码:" + Integer.toString(paramInt2));
-                        break;
-                    case 56:
-                        if (paramInt2 == 0) {
-                            showToast("工作密钥设置成功");
-                            break;
-                        }
-                        showToast("工作密钥设置失败,错误代码:" + Integer.toString(paramInt2));
-                        break;
-                    case 55:
-                        if (paramInt2 == 0) {
-                            showToast("MAC:" + paramString.toString());
-                            break;
-                        }
-                        showToast("GetMac失败,错误代码:" + Integer.toString(paramInt2));
-                        break;
-                    case 66:
-                        if (paramInt2 == 0) {
-                            showToast("商户号终端号设置成功");
-                            showToast("正在读取TerNo...");
-                            bluetoothComm.ReadTernumber();
-                            break;
-                        }
-                        showToast("商户号终端号设置失败,错误代码:" + Integer.toString(paramInt2));
-                        break;
-                    case 65:
-                        if (paramInt2 == 0) {
-                            showToast("商户号终端号:" + paramString.toString());
-                            break;
-                        }
-                        showToast("商户号终端号读取失败:" + Integer.toString(paramInt2));
-                }
-            }
-        });
+//                            break;
+//                        }
+//                        showToast("刷卡失败,错误代码:" + Integer.toString(paramInt2));
+//                        break;
+//                    case 52:
+//                        if (paramInt2 == 0) {
+//                            showToast("主密钥设置成功");
+//                            break;
+//                        }
+//                        showToast("主密钥设置失败,错误代码:" + Integer.toString(paramInt2));
+//                        break;
+//                    case 56:
+//                        if (paramInt2 == 0) {
+//                            showToast("工作密钥设置成功");
+//                            break;
+//                        }
+//                        showToast("工作密钥设置失败,错误代码:" + Integer.toString(paramInt2));
+//                        break;
+//                    case 55:
+//                        if (paramInt2 == 0) {
+//                            showToast("MAC:" + paramString.toString());
+//                            break;
+//                        }
+//                        showToast("GetMac失败,错误代码:" + Integer.toString(paramInt2));
+//                        break;
+//                    case 66:
+//                        if (paramInt2 == 0) {
+//                            showToast("商户号终端号设置成功");
+//                            showToast("正在读取TerNo...");
+//                            bluetoothComm.ReadTernumber();
+//                            break;
+//                        }
+//                        showToast("商户号终端号设置失败,错误代码:" + Integer.toString(paramInt2));
+//                        break;
+//                    case 65:
+//                        if (paramInt2 == 0) {
+//                            showToast("商户号终端号:" + paramString.toString());
+//                            break;
+//                        }
+//                        showToast("商户号终端号读取失败:" + Integer.toString(paramInt2));
+//                }
+//            }
+//        });
     }
 
     protected void onResume() {
