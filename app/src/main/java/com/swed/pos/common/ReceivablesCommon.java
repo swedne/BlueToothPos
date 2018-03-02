@@ -5,18 +5,13 @@ import android.widget.EditText;
 import com.jhl.jhlblueconn.BluetoothCommmanager;
 import com.swed.pos.BaseActivity;
 import com.swed.pos.OtherWebActivity;
-import com.swed.pos.SelectTypeActivity;
 import com.swed.pos.model.CardData;
-import com.swed.pos.model.ConsumerType;
 import com.swed.pos.myapplication.R;
 import com.swed.pos.util.DialogUtil;
-import com.swed.pos.util.TextUtil;
 import com.swed.pos.util.TimeUtil;
 
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ReceivablesCommon {
     public static final String REQUEST_RATE = "/index.php?g=app&m=Dict&a=getrate";
@@ -105,77 +100,6 @@ public class ReceivablesCommon {
     }
 
 
-    public static void onGetCardInfo(SelectTypeActivity paramReceivablesActivity, Map paramMap) {
-        HashMap localHashMap = new HashMap();
-        Iterator iterator = paramMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry next = (Map.Entry) iterator.next();
-            TextUtil.out((String) (next.getKey()) + "------" + (String) (next).getValue());
-            localHashMap.put(((Map.Entry) next).getKey(), ((Map.Entry) next).getValue());
-        }
-        CardData localObject = new CardData();
-        ConsumerType currentType = paramReceivablesActivity.getCurrentType();
-        localObject.setCardid((String) localHashMap.get("PAN"));
-        String money = "0.01";
-        localObject.setAmountrmb(money);
-        //平台结算金额
-        String sourceMoney = "0.01";
-        localObject.setAmountother(sourceMoney);
-        localObject.setMerchant(paramReceivablesActivity.getCurrentType().getId() + "");
-        localObject.setExchangerate(localObject.getExchangerate());
-        localObject.setDowngrad((String) localHashMap.get("Downgrad"));
-        localObject.setEncrytrack2((String) localHashMap.get("Encrytrack2len"));
-        if (TextUtil.isEmpty((String) localHashMap.get("AsciiPwd"))) {
-            String psw = paramReceivablesActivity.pwd;
-            localObject.setAsciipwd(psw);
-            localObject.setPan((String) localHashMap.get("PAN"));
-            localObject.setEncrytrack3len((String) localHashMap.get("Encrytrack3len"));
-            localObject.setEncrytrack2((String) localHashMap.get("Encrytrack2"));
-            localObject.setExpiredate((String) localHashMap.get("ExpireDate"));
-//            if (localHashMap.get("SnData") == null) {
-////                break label571;
-//                return;
-//            }
-            localObject.setSn((String) localHashMap.get("SnData"));
-            localObject.setSndata((String) localHashMap.get("SnData"));
-        }
-//        for (; ; ) {
-//            localObject.setTrack55len((String) localHashMap.get("Track55len"));
-//            localObject.setPinblock((String) localHashMap.get("Pinblock"));
-//            localObject.setSzentrymode((String) localHashMap.get("SzEntryMode"));
-//            localObject.setTrack3((String) localHashMap.get("Track3"));
-//            localObject.setCard_type((String) localHashMap.get("CardType"));
-//            localObject.setAmount((String) localHashMap.get("Amount"));
-//            localObject.setTrack2len((String) localHashMap.get("Track2len"));
-//            localObject.setTrack3len((String) localHashMap.get("Track3len"));
-//            localObject.setTrack55((String) localHashMap.get("Track55"));
-//            localObject.setEncrytrack3((String) localHashMap.get("Encrytrack3"));
-//            localObject.setPanseqno((String) localHashMap.get("PanSeqNo"));
-//            localObject.setTrack2((String) localHashMap.get("Track2"));
-//            commitData((CardData) localObject, paramReceivablesActivity);
-//            return;
-//            paramMap = (String) localHashMap.get("AsciiPwd");
-//            break;
-//            ((CardData) localObject).setSn((String) BaseActivity.deviceInfo.get("SN"));
-//            ((CardData) localObject).setSndata((String) BaseActivity.deviceInfo.get("SN"));
-//        }
-    }
-
-//    public static void setSourceMoneyChange(ReceivablesActivity paramReceivablesActivity) {
-//        paramReceivablesActivity.getSourceMoneyEt().addTextChangedListener(new TextWatcher() {
-//            public void afterTextChanged(Editable paramAnonymousEditable) {
-//            }
-//
-//            public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {
-//            }
-//
-//            public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {
-//                double d1 = this.val$activity.getSourceMoney();
-//                double d2 = this.val$activity.getCurrentType().getExchangerateFloat();
-//                this.val$activity.getEndMoneyEt().setText(TextUtil.keepTwoDecimal(d1 * d2));
-//            }
-//        });
-//    }
 
     public static void showPasswordInputDialog(final OtherWebActivity paramReceivablesActivity) {
         paramReceivablesActivity.pwd = "";

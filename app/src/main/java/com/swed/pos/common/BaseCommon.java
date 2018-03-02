@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import com.jhl.bluetooth.ibridge.BluetoothIBridgeDevice;
 import com.jhl.jhlblueconn.BluetoothCommmanager;
 import com.mf.mpos.pub.Controler;
 import com.swed.pos.BaseActivity;
-import com.swed.pos.SelectTypeActivity;
 import com.swed.pos.myapplication.R;
 import com.swed.pos.util.DialogUtil;
 import com.swed.pos.util.MyToast;
@@ -33,36 +31,36 @@ public class BaseCommon {
     private static ArrayList<BluetoothDevice> devs = new ArrayList<BluetoothDevice>();
 
 
-    public static void clickMenu(final BaseActivity paramBaseActivity) {
-        paramBaseActivity.isGetSn = false;
-        if (paramBaseActivity.bOpenDevice) {
-            DialogUtil.showTipsDialog(paramBaseActivity, paramBaseActivity.getString(R.string.is_break_connect), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-//                    paramBaseActivity.showCancelDialogRes(R.string.negative);
-                    paramBaseActivity.disconnectBluetooth();
-                    paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
-                }
-            });
-            return;
-        }
-        if (BaseActivity.bluetoothHandler != null) {
-            BaseActivity.bluetoothHandler.removeBluetoothListener(paramBaseActivity);
-        }
-    }
+//    public static void clickMenu(final BaseActivity paramBaseActivity) {
+//        paramBaseActivity.isGetSn = false;
+//        if (paramBaseActivity.bOpenDevice) {
+//            DialogUtil.showTipsDialog(paramBaseActivity, paramBaseActivity.getString(R.string.is_break_connect), new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
+////                    paramBaseActivity.showCancelDialogRes(R.string.negative);
+//                    paramBaseActivity.disconnectBluetooth();
+//                    paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
+//                }
+//            });
+//            return;
+//        }
+//        if (BaseActivity.bluetoothHandler != null) {
+//            BaseActivity.bluetoothHandler.removeBluetoothListener(paramBaseActivity);
+//        }
+//    }
 
 
-    public static void getSN(BaseActivity paramBaseActivity) {
-        paramBaseActivity.isGetSn = true;
-        if (BaseActivity.deviceInfo != null) {
-            paramBaseActivity.dismissDialog();
-            paramBaseActivity.onDeviceInfo(BaseActivity.deviceInfo);
-            return;
-        }
-        if (BaseActivity.bluetoothHandler != null) {
-            BaseActivity.bluetoothHandler.removeBluetoothListener(paramBaseActivity);
-        }
-        paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
-    }
+//    public static void getSN(BaseActivity paramBaseActivity) {
+//        paramBaseActivity.isGetSn = true;
+//        if (BaseActivity.deviceInfo != null) {
+//            paramBaseActivity.dismissDialog();
+//            paramBaseActivity.onDeviceInfo(BaseActivity.deviceInfo);
+//            return;
+//        }
+//        if (BaseActivity.bluetoothHandler != null) {
+//            BaseActivity.bluetoothHandler.removeBluetoothListener(paramBaseActivity);
+//        }
+//        paramBaseActivity.startActivityForResult(new Intent(paramBaseActivity, SelectTypeActivity.class), 100);
+//    }
 
 
     public static boolean onBluetoothStatusChange(BaseActivity paramBaseActivity, int paramInt, BluetoothCommmanager paramBluetoothCommmanager) {
