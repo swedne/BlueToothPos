@@ -195,9 +195,9 @@ public class OtherWebActivity extends BaseActivity {
 
 
     private void bindSn(String sn) {
-        String action = "http://upay.xmktv.net?g=app&m=public&a=buildSn";
-        String bindSn = "javascript:get_buildSn_api(%s,%s)";
-        bindSn = String.format(bindSn, "'" + action + "'", "'" + sn + "'");
+//        String action = "http://upay.xmktv.net?g=app&m=public&a=buildSn";
+        String bindSn = "javascript:get_buildSn_api(%s)";
+        bindSn = String.format(bindSn, "'" + sn + "'");
         mWeb.loadUrl(bindSn);
     }
 

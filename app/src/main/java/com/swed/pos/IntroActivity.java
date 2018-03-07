@@ -35,7 +35,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onResponse(QueryResult result) {
                 StringBean stringBean = (StringBean) result;
-                if (stringBean.getDataMsg().getIs_show().equals("yes")) {
+                if (stringBean.getDataMsg().getIs_show()) {
                     startApp();
                 } else {
                     toHome();
@@ -56,7 +56,7 @@ public class IntroActivity extends AppCompatActivity {
             public void run() {
                 toHome();
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void toHome() {
