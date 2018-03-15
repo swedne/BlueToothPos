@@ -14,6 +14,15 @@ public class StringBean extends QueryResult {
 
     public class StringData {
         private String url;
+        private Integer show_time;
+
+        public Integer getShow_time() {
+            return show_time;
+        }
+
+        public void setShow_time(Integer show_time) {
+            this.show_time = show_time;
+        }
 
         public boolean getIs_show() {
             return is_show;

@@ -36,7 +36,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onResponse(QueryResult result) {
                 StringBean stringBean = (StringBean) result;
                 if (stringBean.getDataMsg().getIs_show()) {
-                    startApp();
+                    startApp(stringBean.getDataMsg().getShow_time());
                 } else {
                     toHome();
                 }
@@ -49,14 +49,14 @@ public class IntroActivity extends AppCompatActivity {
         });
     }
 
-    private void startApp() {
+    private void startApp(int delayMillis) {
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
                 toHome();
             }
-        }, 2000);
+        }, delayMillis);
     }
 
     private void toHome() {

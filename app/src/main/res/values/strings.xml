@@ -14,6 +14,7 @@
     <string name="band_bluetooth_success">蓝牙绑定成功</string>
     <string name="banding_bluetooth">正在绑定蓝牙</string>
     <string name="place_switch_device">请选择蓝牙设备</string>
+    <string name="place_open_bluetooth">请打开蓝牙</string>
     <string name="breaking_bluetooth">正在断开蓝牙....</string>
     <string name="unfind_device">未找到设备</string>
     <string name="is_connect">是否打开蓝牙连接？</string>

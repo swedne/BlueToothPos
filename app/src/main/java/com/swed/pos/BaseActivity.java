@@ -56,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BlueComm
     ArrayList<BluetoothIBridgeDevice> arrayList;
     private ImageView backImage;
     List<BluetoothBean> beanList = new ArrayList();
-    protected BluetoothCommmanager bluetoothComm = null;
+    public static BluetoothCommmanager bluetoothComm = null;
     boolean isDestroyed;
     public boolean isGetSn = false;
     public boolean isShowDialog = false;

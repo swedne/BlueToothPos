@@ -3,11 +3,13 @@ package com.swed.pos.common;
 import android.widget.EditText;
 
 import com.jhl.jhlblueconn.BluetoothCommmanager;
+import com.mf.mpos.pub.Controler;
 import com.swed.pos.BaseActivity;
 import com.swed.pos.OtherWebActivity;
 import com.swed.pos.model.CardData;
 import com.swed.pos.myapplication.R;
 import com.swed.pos.util.DialogUtil;
+import com.swed.pos.util.MyToast;
 import com.swed.pos.util.TimeUtil;
 
 import java.text.ParseException;
@@ -100,9 +102,9 @@ public class ReceivablesCommon {
     }
 
 
-
     public static void showPasswordInputDialog(final OtherWebActivity paramReceivablesActivity) {
         paramReceivablesActivity.pwd = "";
+        //jhl密码框
         DialogUtil.showPasswordDialog(paramReceivablesActivity, R.string.place_input_password, 2, new DialogUtil.OnMoneyInputListener() {
             public void onMoneyInput(EditText paramAnonymousEditText) {
                 paramReceivablesActivity.pwd = paramAnonymousEditText.getText().toString();
@@ -111,7 +113,7 @@ public class ReceivablesCommon {
         });
     }
 
-    public static void startSwippingCard(OtherWebActivity paramReceivablesActivity, String money) {
+    public static void startSwippingCard(OtherWebActivity paramReceivablesActivity, String money, int classify) {
 //        if (!checkData(paramReceivablesActivity)) {
 //            return;
 //        }
@@ -120,6 +122,29 @@ public class ReceivablesCommon {
 //                break;
 //            }
 //        } while (BaseActivity.bluetoothHandler == null);
+        if (classify == paramReceivablesActivity.ZC) {
+            if (BaseActivity.bluetoothHandler != null) {
+                if (!BaseActivity.bluetoothHandler.isConnected()) {
+                    MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+                }
+            }
+            return;
+        } else if (classify == paramReceivablesActivity.JHL) {
+            if (BaseActivity.bluetoothComm.GetDeviceInfo() == -1) {
+                MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+            }
+            return;
+        } else if (classify == paramReceivablesActivity.MF) {
+            if (!Controler.posConnected()) {
+                MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+            }
+            return;
+        } else if (classify == paramReceivablesActivity.MFBLACK) {
+            if (!Controler.posConnected()) {
+                MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+            }
+            return;
+        }
         paramReceivablesActivity.startSwippingCard(money);
         if (BaseActivity.bluetoothHandler != null) {
             BaseActivity.bluetoothHandler.removeBluetoothListener(paramReceivablesActivity);
