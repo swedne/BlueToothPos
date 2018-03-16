@@ -28,7 +28,7 @@ import java.util.Set;
 
 public class BaseCommon {
     public static final int REQUEST_CONNECT = 100;
-    private static ArrayList<BluetoothDevice> devs = new ArrayList<BluetoothDevice>();
+    public static ArrayList<BluetoothDevice> devs = new ArrayList<BluetoothDevice>();
 
 
 //    public static void clickMenu(final BaseActivity paramBaseActivity) {
@@ -151,6 +151,7 @@ public class BaseCommon {
     }
 
     public static void showDeviceDialog(final BaseActivity paramBaseActivity, final BluetoothHandler paramBluetoothHandler, final List<BluetoothBean> paramList) {
+        paramBaseActivity.dismissDialog();
         if (paramBaseActivity.isDestroyed()) {
             return;
         }
@@ -158,7 +159,6 @@ public class BaseCommon {
             MyToast.show(paramBaseActivity, paramBaseActivity.getResources().getString(R.string.unfind_device));
             return;
         }
-        paramBaseActivity.dismissDialog();
         final String[] arrayOfString = new String[paramList.size()];
         int i = 0;
         while (i < paramList.size()) {
@@ -288,7 +288,9 @@ public class BaseCommon {
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
         devs.clear();
         for (BluetoothDevice device : pairedDevices) {
-            devs.add(device);
+            if (!device.getName().equals("")) {
+                devs.add(device);
+            }
         }
         activity.showDialogRes(R.string.search_bluetooth);
         Controler.startSearchDev(new Controler.IonSearchDev() {

@@ -1,6 +1,7 @@
 package com.swed.pos;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -176,12 +177,13 @@ public class OtherWebActivity extends BaseActivity {
     public void initView() {
         IntentFilter statusFilter = new IntentFilter();
         statusFilter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+        statusFilter.addAction(BluetoothDevice.ACTION_FOUND);
         mContext.registerReceiver(mStatusReceive, statusFilter);
         //魔方 start
         btAdapter.enable();
         config = getSharedPreferences("config", Context.MODE_PRIVATE);
         CommEnum.CONNECTMODE mode = getMode();
-        Controler.Init(this, mode, getcsid());
+        Controler.Init(this, mode);
 //        Controler.Init(this, CommEnum.CONNECTMODE.BLUETOOTH);
         //魔方 end
 
@@ -774,6 +776,23 @@ public class OtherWebActivity extends BaseActivity {
                         case BluetoothAdapter.STATE_OFF:
                             isOpen = 0;
                             break;
+                    }
+                    break;
+                case BluetoothDevice.ACTION_FOUND:
+                    try {
+                        {
+                            BluetoothDevice btDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                            if (btDevice != null) {
+                                if (btDevice.getName().equals("") || btDevice.getName().equals("null") || btDevice.getName() == null) {
+                                    return;
+                                }
+                                if (!BaseCommon.devs.contains(btDevice)) {
+                                    BaseCommon.devs.add(btDevice);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+
                     }
                     break;
             }
