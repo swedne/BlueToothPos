@@ -15,9 +15,11 @@ public class BusinessAPI {
      * 获取跳转链接
      */
     static final String H5_URL = "https://www.uncardpay.net/index.php?g=app& m=public&a=getUrl";
+//    static final String H5_URL = "http://upay.xmktv.net/index.php?g=app& m=public&a=getUrl";
     /**
      * 获取启动页
      */
+//    static final String H5_INRO = "http://upay.xmktv.net/index.php?g=app&m=public&a=getLoginWeb";
     static final String H5_INRO = "https://www.uncardpay.net/index.php?g=app&m=public&a=getLoginWeb";
 
     /**

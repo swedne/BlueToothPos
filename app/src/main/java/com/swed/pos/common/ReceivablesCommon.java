@@ -126,24 +126,30 @@ public class ReceivablesCommon {
             if (BaseActivity.bluetoothHandler != null) {
                 if (!BaseActivity.bluetoothHandler.isConnected()) {
                     MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+                    return;
                 }
             }
-            return;
-        } else if (classify == paramReceivablesActivity.JHL) {
-            if (BaseActivity.bluetoothComm.GetDeviceInfo() == -1) {
-                MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
-            }
-            return;
-        } else if (classify == paramReceivablesActivity.MF) {
+
+        }
+//        else if (classify == paramReceivablesActivity.JHL) {
+//            if (BaseActivity.bluetoothComm.GetDeviceInfo() == -1) {
+//                MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+//                return;
+//            }
+//
+//        }
+        else if (classify == paramReceivablesActivity.MF) {
             if (!Controler.posConnected()) {
                 MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+                return;
             }
-            return;
+
         } else if (classify == paramReceivablesActivity.MFBLACK) {
             if (!Controler.posConnected()) {
                 MyToast.show(paramReceivablesActivity, "蓝牙连接设备失败,请断开蓝牙重新连接");
+                return;
             }
-            return;
+
         }
         paramReceivablesActivity.startSwippingCard(money);
         if (BaseActivity.bluetoothHandler != null) {

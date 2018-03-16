@@ -1,10 +1,8 @@
 package com.swed.pos;
 
-import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -43,7 +41,6 @@ import com.swed.pos.myapplication.R;
 import com.swed.pos.net.BusinessAPI;
 import com.swed.pos.net.OkHttpManager;
 import com.swed.pos.util.DialogUtil;
-import com.swed.pos.util.MyToast;
 import com.swed.pos.util.WebViewManager;
 
 import java.util.ArrayList;
@@ -71,20 +68,22 @@ public class OtherWebActivity extends BaseActivity {
             super.handleMessage(msg);
             if (msg.what == 1) {//扫描zc设备
                 classify = ZC;
-                if (isOpen) {
+                if (btAdapter.isEnabled()) {
                     BaseCommon.searchDevice(OtherWebActivity.this, true);
-                } else {
-                    showBlueWarn();
                 }
+//                else {
+//                    showBlueWarn();
+//                }
             } else if (msg.what == 2) {//中磁刷卡操作
                 ReceivablesCommon.startSwippingCard(OtherWebActivity.this, "", classify);
             } else if (msg.what == 3) {//扫描JHL
                 classify = JHL;
-                if (isOpen) {
+                if (btAdapter.isEnabled()) {
                     BaseCommon.searchDevice(OtherWebActivity.this, false);
-                } else {
-                    showBlueWarn();
                 }
+//                else {
+//                    showBlueWarn();
+//                }
             } else if (msg.what == 4) {//jhl刷卡操作
                 ReceivablesCommon.startSwippingCard(OtherWebActivity.this, (String) msg.obj, classify);
             } else if (msg.what == 5) {//jhl绑定sn号
@@ -92,11 +91,12 @@ public class OtherWebActivity extends BaseActivity {
                 bindSn((String) msg.obj);
             } else if (msg.what == 6) {//扫描魔方
                 classify = MF;
-                if (isOpen) {
+                if (btAdapter.isEnabled()) {
                     BaseCommon.searchMfDevice(OtherWebActivity.this, btAdapter, handler);
-                } else {
-                    showBlueWarn();
                 }
+//                else {
+//                    showBlueWarn();
+//                }
             } else if (msg.what == 7) {//魔方刷卡操作
                 ReceivablesCommon.startSwippingCard(OtherWebActivity.this, (String) msg.obj, classify);
             } else if (msg.what == 8) {//魔方连接成功绑定sn号
@@ -126,26 +126,30 @@ public class OtherWebActivity extends BaseActivity {
     private void showBlueWarn() {
         if (btAdapter != null) {
             if (!btAdapter.isEnabled()) {
-                new AlertDialog.Builder(this).setTitle(R.string.place_open_bluetooth).setIcon(R.mipmap.ic_launcher).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface paramAnonymousDialogInterface, final int paramAnonymousInt) {
-                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        enableBtIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(enableBtIntent);
-                    }
-                }).setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-                    }
-                }).create().show();
+                isOpenBlue(0);
+//                new AlertDialog.Builder(this).setTitle(R.string.place_open_bluetooth).setIcon(R.mipmap.ic_launcher).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface paramAnonymousDialogInterface, final int paramAnonymousInt) {
+//                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//                        enableBtIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivityForResult(enableBtIntent, 1);
+//                    }
+//                }).setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
+//                    }
+//                }).create().show();
 
+            } else {
+                isOpenBlue(1);
             }
         } else {
-            MyToast.show(this, "该手机不支持蓝牙");
+            isOpenBlue(0);
+//            MyToast.show(this, "该手机不支持蓝牙");
         }
 
     }
 
     public String pwd;
-    private String jhlSn;
+    public String jhlSn;
     private String mFSn;
     private SharedPreferences config;
 
@@ -170,8 +174,9 @@ public class OtherWebActivity extends BaseActivity {
     }
 
     public void initView() {
-        IntentFilter statusFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-//        mContext.registerReceiver(mStatusReceive, statusFilter);
+        IntentFilter statusFilter = new IntentFilter();
+        statusFilter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+        mContext.registerReceiver(mStatusReceive, statusFilter);
         //魔方 start
         btAdapter.enable();
         config = getSharedPreferences("config", Context.MODE_PRIVATE);
@@ -224,6 +229,8 @@ public class OtherWebActivity extends BaseActivity {
         if (mWeb != null) {
             mWeb.destroy();
         }
+        if (mStatusReceive != null)
+            unregisterReceiver(mStatusReceive);
     }
 
     @Override
@@ -248,6 +255,12 @@ public class OtherWebActivity extends BaseActivity {
         String bindSn = "javascript:get_buildSn_api(%s)";
         bindSn = String.format(bindSn, "'" + sn + "'");
         mWeb.loadUrl(bindSn);
+    }
+
+    private void isOpenBlue(int isOpen) {
+        String isOpenBlue = "javascript:isOpenBlue(%s)";
+        isOpenBlue = String.format(isOpenBlue, isOpen);
+        mWeb.loadUrl(isOpenBlue);
     }
 
     private void commitData(String asciipwd, HashMap<String, String> hashMap) {
@@ -741,7 +754,7 @@ public class OtherWebActivity extends BaseActivity {
         super.onBlueState(paramInt);
     }
 
-    private boolean isOpen;
+    private int isOpen;
     private BroadcastReceiver mStatusReceive = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -750,20 +763,23 @@ public class OtherWebActivity extends BaseActivity {
                     int blueState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
                     switch (blueState) {
                         case BluetoothAdapter.STATE_TURNING_ON:
+                            isOpen = 1;
                             break;
                         case BluetoothAdapter.STATE_ON:
-                            isOpen = true;
+                            isOpen = 1;
                             break;
                         case BluetoothAdapter.STATE_TURNING_OFF:
+                            isOpen = 0;
                             break;
                         case BluetoothAdapter.STATE_OFF:
-                            isOpen = false;
+                            isOpen = 0;
                             break;
                     }
                     break;
             }
         }
     };
+
 
 }
 
