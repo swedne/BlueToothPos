@@ -366,7 +366,7 @@ public class OtherWebActivity extends BaseActivity {
             localObject = bluetoothHandler.shareSppInstance();
             System.out.println("type----spp");
         }
-        if (paramCardDetected == CardDetected.SWIPED) {
+        if (paramCardDetected == CardDetected.SWIPED || paramCardDetected == CardDetected.ICCHIP) {
             final HashMap<String, String> hashMap = new HashMap();
             str1 = ((SwipeHandler) localObject).getMagPan();
             str2 = ((SwipeHandler) localObject).getTrack1Data();
